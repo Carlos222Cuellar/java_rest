@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Parcial 3</title>
+    
+        <link rel="stylesheet" type="text/css" href="primeui/primeui-4.1.15/themes/aristo/theme.css" />
+        <link rel="stylesheet" type="text/css" href="primeui/jquery/jquery-ui.css" />
+        <!--link rel="stylesheet" type="text/css" href="resources/css/sh.css"/-->
+        <link rel="stylesheet" type="text/css" href="primeui/font-awesome-4.7.0/css/font-awesome.min.css" />
+        <script type="text/javascript" src="primeui/jquery/jquery.js"></script>
+        <script type="text/javascript" src="primeui/jquery/jquery-ui.js"></script>
+
+        <!-- Dependencies of some widgets -->
+        <script type="text/javascript" src="primeui/primeui-4.1.15/plugins/plugins-all.js"></script>
+
+        <!-- Mustache for templating support -->
+        <script type="text/javascript" src="primeui/primeui-4.1.15/plugins/mustache.min.js"></script>
+        
+        <!-- PrimeUI -->
+        <link rel="stylesheet" href="primeui/primeui-4.1.15/primeui.css" />
+        <script type="text/javascript" src="primeui/primeui-4.1.15/primeui.js"></script>
+        <script type="text/javascript" src="primeui/primeui-4.1.15/primeelements.js"></script>
+
+    </head>
+    <body>
+        <!-- Tabla para Tipo Paso-->
+        <br/>
+        TABLA TIPO PASO
+        <div id="tblTipoPaso"></div><br/>
+        
+        ID: <input id="txtIdTipoPaso" type="text" /> <br/>
+        NOBRE: <input id="txtNombreTipoPaso" type="text" /> <br/>
+        ACTIVO: <input type="checkbox" name="chkActivoTipoPaso" id="chkActivoTipoPaso" value="1"/> <br/>
+        DESCRIPCION: <textarea id="txtDescripcionTipoPaso" ></textarea> <br/>
+        
+        <button id="btnBotton1paso" type="button">agregar</button>
+        <button id="btnBotton2paso" type="button">modificar</button>
+        <button id="btnBotton3paso" type="button">eliminar</button>
+        <button id="btnBotton4paso" type="button">cancelar</button><br/>
+        
+        
+        <!-- Tabla para Paso-->
+        <br/>
+        TABLA PASO
+        <div id="tblPaso"></div><br/>
+        
+        ID: <input id="txtIdPaso" type="text" /> <br/>
+        NOMBRE: <input id="txtNombrePaso" type="text" /> <br/>
+       <!-- ACTIVO: <input type="checkbox" name="chkActivoTipoPaso" id="chkActivoTipoPaso" value="1"/> <br/>  -->
+        DESCRIPCION: <textarea id="txtDescripcionPaso" ></textarea> <br/>
+        <button id="btnBotton5tpaso" type="button">agregar</button>
+        <button id="btnBotton6tpaso" type="button">modificar</button>
+        <button id="btnBotton7tpaso" type="button">eliminar</button>
+        <button id="btnBotton8tpaso" type="button">cancelar</button><br/>
+
+     
+        <script src="crud.js"></script>
+        <script src="componentes.js"></script>
+    </body>
+         
+</html>

@@ -1,0 +1,48 @@
+version: '2'
+
+services:
+    postgres:
+        image: 'postgres-imagenprn'
+        build: ./postgres/
+        container_name: 'psqlalpine-prn335'
+        environment:
+        - POSTGRES_USER=mortal2017
+        - POSTGRES_PASSWORD=prn335
+        - POSTGRES_DB=posts
+        ports:
+        - '5432:5432'
+        volumes:
+        - ./data/postgres:/var/lib/postgresql/data:Z
+        hostname: postgres
+        networks:
+        -  progra3
+
+    payara_server:
+        image: 'progra3/payara-server'
+        build: ./payara-server/.   
+        container_name: 'payara-server'
+        depends_on:
+        - postgres
+        networks:
+        -  progra3
+        ports:
+        - "8080:8080"
+        - "4848:4848"
+
+    payara_cliente:
+        image: 'progra3/payara-cliente'
+        build: ./payara-client/.   
+        container_name: 'payara-cliente'
+        depends_on:
+        -  payara_server
+        networks:
+        -  progra3
+        ports:
+        - "9090:8080"
+        - "4949:4848"
+        environment:
+        - URL_SERVER=http://payara-server:80/parcial3server-1.0-SNAPSHOT/parcial03/
+           
+
+networks:
+    progra3:

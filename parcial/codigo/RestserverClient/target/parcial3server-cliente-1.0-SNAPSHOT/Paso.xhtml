@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Paso</title>
+            </f:facet>
+        </h:head>
+       
+        <h:body> 
+            <br/>
+        <h:link outcome="index" value="ATRAS" />
+        <br/>
+            <f:view>
+            <h:form id="tabla">
+                <h1 align="center"><h:outputText value="Paso"/></h1>
+                <p:dataTable value="#{PasoBean.listaPaso}" var="item" paginator="true" 
+                             rows="5" rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{PasoBean.pasoEntity}" rowKey="#{item.idPaso}" >
+                    <p:ajax event="rowSelect" listener="#{PasoBean.onRowSelect}" update=":formulario"/>
+                    <p:column sortBy="#{item.idPaso}">
+                        <f:facet name="header">
+                            <h:outputText value="IdPaso"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idPaso}"/>
+                    </p:column>
+                     <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nombre"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nombre}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Comentarios"/>
+                        </f:facet>
+                        <h:outputText value="#{item.comentarios}">
+                        </h:outputText>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </f:view>
+        <f:view>
+            <h:form id="formulario" >
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                <div align="left">
+                    <p:panelGrid columns="2"> 
+                       <p:outputLabel value="Nombre:" for="nombre" />
+                        <p:inputText id="nombre" value="#{PasoBean.pasoEntity.nombre}" title="Nombre" required="true" requiredMessage="El nombre es requerido." />
+                        <p:outputLabel value="Comentarios:" for="comentarios" />
+                        <p:inputText id="comentarios" value="#{PasoBean.pasoEntity.comentarios}" title="Comentarios" required="true" requiredMessage="Los comentarios son requeridos."/>
+                        </p:panelGrid>
+                    <p:panel visible="#{!PasoBean.btnVisible}">
+                        <p:commandButton value="Agregar" actionListener="#{PasoBean.crearReg()}" update="@all"/>
+                        <p:commandButton value="Limpiar" type="reset"/>
+                    </p:panel>
+                    <p:panel visible="#{PasoBean.btnVisible}">
+                        <p:commandButton value="Modificar" actionListener="#{PasoBean.editarReg()}" update="@all">
+                        </p:commandButton>
+                        <p:commandButton value="Eliminar" actionListener="#{PasoBean.eliminarReg()}" update="@all"/>
+                        <p:commandButton value="Cancelar" immediate="true">
+                            <p:ajax listener="#{PasoBean.btnCancelar()}" update="@form :tabla"/>
+                        </p:commandButton>
+                    </p:panel>
+                </div>
+            </h:form>
+        </f:view>
+             
+        
+          <!--br/-->
+        <!--h:link outcome="index" value="ATRAS" /-->  
+         <!--br/-->
+        <p align="left" style="size: 10px">Todos los Derechos Reservados 2017</p>
+        
+        </h:body>
+
+    </f:view>
+</html>
+
